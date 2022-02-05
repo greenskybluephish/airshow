@@ -8,6 +8,7 @@ import {
 } from "./components/Text";
 import type { Colors, FontSizes } from "./components/Text";
 import "./App.css";
+import { Input } from "./components/Input";
 
 function App() {
   return (
@@ -61,28 +62,28 @@ export const typedKeys = <T extends Record<string, any>>(
   return Object.keys(obj) as Array<keyof T>;
 };
 
-interface SquareProps {
-  letter: string;
-  index: number;
-}
+// interface SquareProps {
+//   letter: string;
+//   index: number;
+// }
 
-const Square = (props: SquareProps) => {
-  return <div className="letterGrid">A</div>;
-};
+// const Square = (props: SquareProps) => {
+//   return <div className="letterGrid"><Input /></div>;
+// };
 
-interface RowProps {
-  word: string;
-  visible: boolean;
-  active: boolean;
-  // children: ReactNode;
-}
+// interface RowProps {
+//   word: string;
+//   visible: boolean;
+//   active: boolean;
+//   // children: ReactNode;
+// }
 
-const Row = (props: RowProps) => {
-  return (
-    <div className="letterGrid">
-      {Array.from(props.word).map((letter, i) => (
-        <Square />
-      ))}
-    </div>
-  );
-};
+// const Row = (props: RowProps) => {
+//   return (
+//     <div className="letterGrid">
+//       {Array.from(props.word).map((letter, i) => (
+//         <Square />
+//       ))}
+//     </div>
+//   );
+// };

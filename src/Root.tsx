@@ -1,5 +1,5 @@
-import App from "./App";
+import Wordle from "./Wordle";
 
 export function Root() {
-  return <App />;
+  return <Wordle />;
 }

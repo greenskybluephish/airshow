@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useRef } from "react";
 import "./Input.scss";
 
 export interface InputProps {
@@ -12,9 +12,20 @@ export interface InputProps {
   name?: string;
   className?: string;
   style?: React.CSSProperties;
+  setMenuItemRef: (node: HTMLInputElement, key: string | number) => void;
+  index: number;
 }
 
 export const Input = (props: InputProps): JSX.Element => {
+  const { index, setMenuItemRef } = props;
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      setMenuItemRef(inputRef.current, index);
+    }
+  }, [index]);
+
   return (
     <div style={props.style} className={props.className}>
       <input
@@ -25,6 +36,7 @@ export const Input = (props: InputProps): JSX.Element => {
         disabled={props.disabled}
         onChange={props.onChange}
         onBlur={props.onBlur}
+        ref={inputRef}
       />
     </div>
   );
