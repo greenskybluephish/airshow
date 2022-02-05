@@ -8,7 +8,6 @@ interface RowProps {
   active: boolean;
   onComplete: (solved: boolean) => void;
   rowNumber: number;
-  inputClassName: string;
   // children: ReactNode;
 }
 
@@ -125,7 +124,6 @@ export const Row = (props: RowProps) => {
       >
         {answerWord.map((letter, i) => (
           <InputSquare
-            className={props.inputClassName}
             readOnly={i !== activeInput}
             setInputRef={setInputRef}
             key={i}

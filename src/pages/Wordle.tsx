@@ -71,14 +71,13 @@ export function Wordle() {
       {showFailure && "Failure"}
       {word && (
         <div className="grid">
-          {word.map((letter, num) => (
+          {[...Array(numberOfRows).keys()].map((letter, num) => (
             <Row
               key={num}
               active={activeRow === num}
               answerWord={word}
               onComplete={onRowComplete}
               rowNumber={num}
-              inputClassName={fontSize[inputText % 3]}
             />
           ))}
         </div>
