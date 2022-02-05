@@ -26,6 +26,8 @@ interface Record {
   total: number;
 }
 
+const fontSize = ['inputText', 'smallText', 'smallestText'];
+
 function Wordle() {
   const [record, setRecord] = useLocalStorage<Record>("wordle", {
     total: 0,
@@ -36,6 +38,8 @@ function Wordle() {
   const [activeRow, setActiveRow] = useState<number>(0);
   const [showSuccess, setShowSuccess] = useState<boolean>(false);
   const [showFailure, setShowFailure] = useState<boolean>(false);
+  const [inputText, setInputText] = useState(0);
+
 
   const setNewWord = () => {
     setRecord({ ...record, total: record.total + 1 });
@@ -69,6 +73,11 @@ function Wordle() {
     }
   },[word])
 
+const changeText = () => {
+  setInputText(inputText+1);
+}
+
+
   return (
     <div className="App">
       <div className="container">
@@ -88,6 +97,7 @@ function Wordle() {
                 answerWord={word}
                 onComplete={onComplete}
                 rowNumber={num}
+                inputClassName={fontSize[inputText % 3]}
               />
             ))
           )}
@@ -96,6 +106,8 @@ function Wordle() {
        {word &&  
         <div className='buttonBox'>
         <button className="reset" onClick={reset}>Reset</button>
+        <div className="pad"></div>
+        <button className="reset" onClick={changeText}>Change text size</button>
       </div>}
         <div className="topBox">
         <p className="stats">Total Games Started: {record.total} </p>
@@ -166,6 +178,7 @@ interface RowProps {
   active: boolean;
   onComplete: (solved: boolean) => void;
   rowNumber: number;
+  inputClassName: string;
   // children: ReactNode;
 }
 
@@ -259,6 +272,7 @@ export const Row = (props: RowProps) => {
       <div className="letterGrid">
         {Array.from(props.answerWord).map((letter, i) => (
           <InputSquare
+          className={props.inputClassName}
             readOnly={!props.active || i !== activeInput}
             setInputRef={setInputRef}
             key={i}
@@ -270,6 +284,7 @@ export const Row = (props: RowProps) => {
             onChange={(e) => handleChange(e, i)}
             setFocused={() => setFocused(i)}
             tabIndex={i === tab ? 0 : -1}
+            disabled={!props.active}
           />
         ))}
       </div>
