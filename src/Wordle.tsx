@@ -1,24 +1,7 @@
 import { ChangeEvent, FC, ReactNode, useEffect, useRef, useState } from "react";
-import {
-  colors,
-  fontSizes,
-  Heading,
-  Text,
-  typestyles,
-} from "./components/Text";
-import type { Colors, FontSizes } from "./components/Text";
 import "./App.css";
 import { useLocalStorage } from "./useStorage";
-
-const wordArray = [
-  "hello",
-  "world",
-  "break",
-  "taken",
-  "oozes",
-  "quite",
-  "sport",
-];
+import { fiveLetters } from "./data";
 
 interface Record {
   wins: number;
@@ -43,8 +26,8 @@ function Wordle() {
 
   const setNewWord = () => {
     setRecord({ ...record, total: record.total + 1 });
-    const num = Math.floor(Math.random() * wordArray.length);
-    setWord(wordArray[num]);
+    const num = Math.floor(Math.random() * fiveLetters.length);
+    setWord(fiveLetters[num]);
   };
 
   const onComplete = (solved: boolean) => {
