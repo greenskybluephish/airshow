@@ -39,6 +39,7 @@ export function Wordle() {
     setRecord({ ...record, total: record.total + 1 });
     const num = Math.floor(Math.random() * fiveLetters.length);
     setWord(Array.from(fiveLetters[num]));
+    console.log(fiveLetters[num]);
   };
 
   const onRowComplete = (solved: boolean) => {
