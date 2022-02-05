@@ -60,19 +60,25 @@ function Wordle() {
     setShowFailure(false);
     setShowSuccess(false);
     setActiveRow(0);
-    setNewWord();
+    setWord('');
   };
+
+  useEffect(() => {
+    if(!word) {
+      setNewWord();
+    }
+  },[word])
 
   return (
     <div className="App">
       <div className="container">
-
+      <h1>Birdle</h1>
         {showSuccess && "Success"}
         {showFailure && "Failure"}
         <div className="grid">
           {!word ? (
             <div>
-              <button onClick={setNewWord}>Start</button>
+              <button className="reset" onClick={setNewWord}>Start</button>
             </div>
           ) : (
             [...Array(6).keys()].map((num) => (
@@ -86,15 +92,19 @@ function Wordle() {
             ))
           )}
         </div>
+
+       {word &&  
+        <div className='buttonBox'>
+        <button className="reset" onClick={reset}>Reset</button>
+      </div>}
         <div className="topBox">
         <p className="stats">Total Games Started: {record.total} </p>
         <p className="stats">Wins: {record.wins} </p>
         <p className="stats">Losses: {record.losses} </p>
       </div>
+
       </div>
-      <div className="topBox">
-        <button onClick={reset}>Reset</button>
-      </div>
+
     </div>
   );
 }

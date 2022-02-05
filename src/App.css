@@ -5,7 +5,7 @@
   width: 100vw;
   justify-content: center;
   align-items: center;
-  background-color: mintcream;
+  background-color: #61dafb;
 }
 
 .App-logo {
@@ -53,14 +53,14 @@ button {
   background-color: #61dafb;
   justify-content: center;
   align-items: center;
-  padding: 48px 0;
+  padding: 0px 0 36px;
 }
 
 .container {
   display: block;
   min-width: 360px;
   width: 50%;
-  margin: 24px;
+  margin: 0 0 24px;
 }
 
 .letterGrid {
@@ -68,8 +68,8 @@ button {
 }
 
 .square {
-  margin: 8px;
-  padding: 8px;
+  margin: 2px;
+  padding: 4px;
   background-color: #282c34;
   color: white;
   border-radius: 4px;
@@ -103,29 +103,35 @@ button {
   background-color: rgb(216, 216, 17);
 }
 
-.sideBox {
+.reset {
   display: flex;
-  flex-direction: column;
+
   padding: 16px;
   border: 1px solid #c8c9d0;
   border-radius: 4px;
   background-color: cornflowerblue;
-  margin: 24px;
+
+}
+
+.buttonBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .topBox {
   display: flex;
-  flex-direction: row;
-  padding: 16px;
+  flex-direction: column;
+  padding: 8px;
   border: 1px solid #c8c9d0;
   border-radius: 4px;
   background-color: cornflowerblue;
-  margin: 24px 0;
-  justify-content: space-around;
+  margin: 36px 0;
+  justify-content: center;
 }
 
 .stats {
-  padding: 8px;
+  padding: 4px;
 
 }
 
@@ -140,7 +146,7 @@ button {
 }
 
 .divider {
-  margin: 4px;
+  margin: 1px;
   border: 2px solid #080808;
   min-width: 360px;
   width: 50%;
