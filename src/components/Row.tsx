@@ -84,7 +84,7 @@ export const Row = (props: RowProps) => {
     }
     const newUserGuess = [...userGuess];
     if (val.match(/^[A-Za-z]+$/)) {
-      newUserGuess[index] = val;
+      newUserGuess[index] = val.toLowerCase();
       setUserGuess(newUserGuess);
       if (activeInput < answerWord.length - 1) {
         setActiveInput(activeInput + 1);
