@@ -83,7 +83,7 @@ export function Wordle() {
           ))}
         </div>
       )}
-      <Space h="xl"></Space>
+      <Space h="lg"></Space>
       <div className="buttonBox">
         <Button size="xl" color="indigo" onClick={reset}>
           Reset

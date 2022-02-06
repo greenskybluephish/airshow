@@ -1,10 +1,12 @@
 import "../App.css";
 import { useLocalStorage } from "../useStorage";
-import { Outlet } from "react-router-dom";
-import { AppShell, Container, Header, Title } from "@mantine/core";
+import { Outlet, useNavigate } from "react-router-dom";
+import { AppShell, Button, Container, Header, Title } from "@mantine/core";
 import { useState } from "react";
 
 export function Layout() {
+  const navigate = useNavigate();
+
   return (
     <AppShell
       padding="md"
@@ -19,7 +21,9 @@ export function Layout() {
                 height: "100%",
               }}
             >
+              <Button variant='outline' style={{position: 'fixed', left: '2%'}} onClick={() => navigate('/')}>Home</Button>
               <Title>birdle</Title>
+
             </div>
           }
         </Header>
@@ -28,11 +32,9 @@ export function Layout() {
         main: { backgroundColor: theme.colors.dark[8] },
       })}
     >
-      {/* <div className="App"> */}
       <Container size="xs" padding="xs">
         <Outlet />
       </Container>
-      {/* </div> */}
     </AppShell>
   );
 }
